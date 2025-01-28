@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="blue-game-engine">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../resource_libraries/blue-game-engine.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../resource_libraries/blue-game-engine.jar!/" />
+    </SOURCES>
+  </library>
+</component>
