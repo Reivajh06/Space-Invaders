@@ -5,7 +5,7 @@ import java.awt.*;
 public class LevelScene extends Scene {
 
 	private BeamsManager beamsManager = new BeamsManager();
-	private AliensManager aliensManager = new AliensManager(2, 20, 100, 30, 30, 50, Color.WHITE);
+	private AliensManager aliensManager = new AliensManager(3, 20, 100, 30, 30, 50, Color.WHITE);
 	private Turret turret = new Turret(200, 600, 30, 30, 10, Color.GREEN);
 
 	public BeamsManager beams() {
@@ -26,10 +26,20 @@ public class LevelScene extends Scene {
 	@Override
 	public void update() {
 		aliensManager.update(this);
-		for (AlienRow alienRow : aliensManager) {
-			if (!beams().isEmpty()) beams().update(this, alienRow);
-		}
 		turret.update(this);
+		beamsManager.update(this);
+	}
+
+	public AliensManager aliensManager() {
+		return aliensManager;
+	}
+
+	public BeamsManager beamsManager() {
+		return beamsManager;
+	}
+
+	public Turret turret() {
+		return turret;
 	}
 }
 

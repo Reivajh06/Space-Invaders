@@ -1,7 +1,6 @@
 package reivajh06.spaceinvaders;
 
 import java.awt.*;
-import java.util.Iterator;
 
 public class Beam extends Entity{
 
@@ -17,11 +16,17 @@ public class Beam extends Entity{
 		this.direction = direction;
 	}
 
-	public void checkCollision(LevelScene scene, AlienRow aliens) {
+	public void checkCollision(LevelScene scene) {
+		for(AlienRow aliens : scene.aliensManager()) {
+			checkAlienRow(aliens);
+		}
+		checkHorizontalBorders(scene.window());
+	}
+
+	private void checkAlienRow(AlienRow aliens) {
 		for(Alien alien : aliens) {
 			checkAlien(alien);
 		}
-		checkHorizontalBorders(scene.window());
 	}
 
 	public void checkHorizontalBorders(Window window) {
@@ -39,12 +44,18 @@ public class Beam extends Entity{
 	}
 
 	public void checkAlien(Alien alien) {
+		if(isAlienBeam()) return;
+
 		if(x() >= alien.x() && x() <= alien.x() + alien.width()) {
-			if(y() == alien.y() + alien.height()) {
+			if(y() <= alien.y() + alien.height()) {
 				alien.destroy();
 				this.destroy();
 			}
 		}
+	}
+
+	private boolean isAlienBeam() {
+		return direction == 1;
 	}
 
 	@Override
@@ -53,8 +64,8 @@ public class Beam extends Entity{
 		graphics.fillRoundRect(x(), y(), 3, 20, 4, 4);
 	}
 
-	public void update(LevelScene scene, AlienRow aliens) {
-		checkCollision(scene, aliens);
+	public void update(LevelScene scene) {
 		setPosition(x(), y() + speed() * direction);
+		checkCollision(scene);
 	}
 }

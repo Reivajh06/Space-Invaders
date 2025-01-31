@@ -17,7 +17,7 @@ public class BeamsManager implements Renderable, Iterable<Beam> {
 		beams.add(beam);
 	}
 
-	public void update(LevelScene scene, AlienRow aliens) {
+	public void update(LevelScene scene) {
 
 		Iterator<Beam> iterator = beams.iterator();
 
@@ -27,7 +27,7 @@ public class BeamsManager implements Renderable, Iterable<Beam> {
 			if (beam.destroyed) {
 				iterator.remove();
 			} else {
-				beam.update(scene, aliens);
+				beam.update(scene);
 			}
 		}
 	}

@@ -49,13 +49,17 @@ public class Alien extends Entity {
 		checkBorders(scene);
 
 		if(framesStill == 0) {
-			setPosition(x() + speed * direction, y());
+			move();
 			framesStill = 60;
 		} else {
 			framesStill -= 1;
 		}
 
 		shoot(scene.beams());
+	}
+
+	private void move() {
+		setPosition(x() + speed * direction, y());
 	}
 
 	public void shoot(BeamsManager beamsManager) {

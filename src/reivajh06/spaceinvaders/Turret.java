@@ -2,6 +2,8 @@ package reivajh06.spaceinvaders;
 
 import naitsirc98.blue.input.Key;
 import naitsirc98.blue.input.Keyboard;
+import naitsirc98.blue.input.Mouse;
+import naitsirc98.blue.input.MouseButton;
 
 import java.awt.*;
 
@@ -16,6 +18,7 @@ public class Turret extends Entity {
 	public void move() {
 		moveLeft();
 		moveRight();
+
 	}
 
 	public void moveLeft() {
@@ -27,9 +30,9 @@ public class Turret extends Entity {
 	}
 
 	public void update(LevelScene scene) {
-		borderCollision(scene);
+		shoot(scene.beams());
 		move();
-
+		setPosition(clamp(x(), 0, scene.window().contentWidth()),y());
 	}
 
 	@Override
@@ -37,6 +40,12 @@ public class Turret extends Entity {
 		if(!isDestroyed()) {
 			graphics.setColor(color);
 			graphics.fillRoundRect(x(), y(), width, height, 4, 4);
+		}
+	}
+
+	public void shoot(BeamsManager beams) {
+		if(Mouse.isPressed(MouseButton.PRIMARY) || Keyboard.isKeyPressed(Key.SPACE)) {
+			beams.addBeam(new Beam(x() + width() / 2, y() + 2, -1, Color.GREEN));
 		}
 	}
 }

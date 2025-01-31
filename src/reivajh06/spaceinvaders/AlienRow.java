@@ -37,24 +37,37 @@ public class AlienRow implements Renderable, Iterable<Alien> {
 	}
 
 	public void update(LevelScene scene) {
-		for(Alien alien : aliens) {
-			if (alien.destroyed) {
-				aliens.remove(alien);
+		Iterator<Alien> iterator = iterator();
+
+		while(iterator.hasNext()) {
+			Alien alien = iterator.next();
+
+			if(alien.isDestroyed()) {
+				iterator.remove();
 			} else {
 				alien.update(scene);
 			}
 		}
 
+		if(aliens.isEmpty()) {
+			return;
+		}
+
 		if(aliens.getFirst().checkBorders(scene) || aliens.getLast().checkBorders(scene)) {
+			Alien firstAlien = aliens.getFirst();
+			Alien lastAlien = aliens.getLast();
+
+			firstAlien.setPosition(firstAlien.clamp(firstAlien.x(), 0, scene.window().contentWidth()), firstAlien.y());
+			lastAlien.setPosition(lastAlien.clamp(lastAlien.x(), 0, scene.window().contentWidth()), lastAlien.y());
 			descend();
 		}
 	}
 
 	public void descend() {
 		for(Alien alien : aliens) {
-			alien.setPosition(alien.x() + 20, alien.y() + alien.height() + 30);
-			alien.framesStill = 60;
 			alien.changeDirection();
+			alien.framesStill = 60;
+			alien.setPosition(alien.x(), alien.y() + alien.height() + 30);
 		}
 	}
 

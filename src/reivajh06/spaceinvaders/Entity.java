@@ -79,20 +79,7 @@ public abstract class Entity implements Renderable {
 		this.color = color;
 	}
 
-	public void borderCollision(LevelScene scene) {
-		leftBorder(scene);
-		rightBorder(scene);
-	}
-
-	public void leftBorder(LevelScene scene) {
-		if(x() <= 0) {
-			setPosition(0, y());
-		}
-	}
-
-	public void rightBorder(LevelScene scene) {
-		if(x() + width() >= scene.window().contentWidth()) {
-			setPosition(scene.window().contentWidth() - width(), y());
-		}
+	public int clamp(int value, int min, int max) {
+		return Math.min(Math.max(value, min), max - width);
 	}
 }
