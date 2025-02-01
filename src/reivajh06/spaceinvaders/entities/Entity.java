@@ -2,6 +2,7 @@ package reivajh06.spaceinvaders.entities;
 
 import reivajh06.spaceinvaders.Position;
 import reivajh06.spaceinvaders.Renderable;
+import reivajh06.spaceinvaders.managers.SpriteManager;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -12,7 +13,7 @@ public abstract class Entity implements Renderable {
 	protected int width;
 	protected int height;
 	protected int speed;
-	protected BufferedImage sprite;
+	protected SpriteManager sprites = null;
 	protected Color color;
 	protected boolean destroyed = false;
 
@@ -24,9 +25,9 @@ public abstract class Entity implements Renderable {
 		this.color = color;
 	}
 
-	public Entity(Position position, int width, int height, Color color, int speed, BufferedImage sprite) {
+	public Entity(Position position, int width, int height, Color color, int speed, SpriteManager sprites) {
 		this(position.x(), position.y(), width, height, speed, color);
-		this.sprite = sprite;
+		this.sprites = sprites;
 	}
 
 	public int x() {

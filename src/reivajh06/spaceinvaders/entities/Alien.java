@@ -48,12 +48,22 @@ public class Alien extends Entity {
 
 	@Override
 	public void render(Graphics2D graphics) {
-		graphics.setColor(color());
-		graphics.fillRoundRect(x(), y(), width(), height(), 4, 4);
+		if(sprites != null) {
+			graphics.drawImage(sprites.currentSprite(), x(), y(), null);
+
+		} else {
+			graphics.setColor(color());
+			graphics.fillRoundRect(x(), y(), width(), height(), 4, 4);
+		}
 	}
 
 	public void update(LevelScene scene) {
+		if(sprites != null) {
+			sprites.update(this);
+		}
+
 		if(destroyed) return;
+
 		checkBorders(scene);
 
 		if(framesStill == 0) {
