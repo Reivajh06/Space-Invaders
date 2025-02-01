@@ -1,4 +1,8 @@
-package reivajh06.spaceinvaders;
+package reivajh06.spaceinvaders.managers;
+
+import reivajh06.spaceinvaders.LevelScene;
+import reivajh06.spaceinvaders.Renderable;
+import reivajh06.spaceinvaders.entities.Beam;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -24,7 +28,7 @@ public class BeamsManager implements Renderable, Iterable<Beam> {
 		while(iterator.hasNext()) {
 			Beam beam = iterator.next();
 
-			if (beam.destroyed) {
+			if (beam.isDestroyed()) {
 				iterator.remove();
 			} else {
 				beam.update(scene);

@@ -1,6 +1,8 @@
-package reivajh06.spaceinvaders;
+package reivajh06.spaceinvaders.entities;
 
-import javax.swing.text.AbstractDocument;
+import reivajh06.spaceinvaders.Position;
+import reivajh06.spaceinvaders.Renderable;
+
 import java.awt.*;
 import java.awt.image.BufferedImage;
 

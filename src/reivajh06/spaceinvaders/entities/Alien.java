@@ -1,4 +1,7 @@
-package reivajh06.spaceinvaders;
+package reivajh06.spaceinvaders.entities;
+
+import reivajh06.spaceinvaders.managers.BeamsManager;
+import reivajh06.spaceinvaders.LevelScene;
 
 import java.awt.*;
 import java.util.Random;
@@ -14,7 +17,11 @@ public class Alien extends Entity {
 		super(x, y, width, height, speed, color);
 		Random random = new Random();
 		cooldown = random.nextInt(0, 1000) + 100;
-		cooldownCounter = random.nextInt(cooldown) + 30;
+		cooldownCounter = random.nextInt(cooldown) + 1000;
+	}
+
+	public int getDirection() {
+		return direction;
 	}
 
 	public boolean checkBorders(LevelScene scene) {
@@ -46,6 +53,7 @@ public class Alien extends Entity {
 	}
 
 	public void update(LevelScene scene) {
+		if(destroyed) return;
 		checkBorders(scene);
 
 		if(framesStill == 0) {

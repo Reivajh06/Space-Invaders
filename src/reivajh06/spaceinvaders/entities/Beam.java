@@ -1,8 +1,11 @@
-package reivajh06.spaceinvaders;
+package reivajh06.spaceinvaders.entities;
+
+import reivajh06.spaceinvaders.AlienRow;
+import reivajh06.spaceinvaders.LevelScene;
 
 import java.awt.*;
 
-public class Beam extends Entity{
+public class Beam extends Entity {
 
 	protected int direction;
 
@@ -21,6 +24,7 @@ public class Beam extends Entity{
 			checkAlienRow(aliens);
 		}
 		checkHorizontalBorders(scene.window());
+		checkTurret(scene.turret());
 	}
 
 	private void checkAlienRow(AlienRow aliens) {
@@ -49,6 +53,17 @@ public class Beam extends Entity{
 		if(x() >= alien.x() && x() <= alien.x() + alien.width()) {
 			if(y() <= alien.y() + alien.height()) {
 				alien.destroy();
+				this.destroy();
+			}
+		}
+	}
+
+	public void checkTurret(Turret turret) {
+		if(!isAlienBeam()) return;
+
+		if(x() + height() >= turret.x() && x() < turret.x() + turret.width()) {
+			if(y() + height() >= turret.y()) {
+				turret.destroy();
 				this.destroy();
 			}
 		}

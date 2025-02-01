@@ -1,12 +1,16 @@
 package reivajh06.spaceinvaders;
 
+import reivajh06.spaceinvaders.entities.Turret;
+import reivajh06.spaceinvaders.managers.AliensManager;
+import reivajh06.spaceinvaders.managers.BeamsManager;
+
 import java.awt.*;
 
 public class LevelScene extends Scene {
 
 	private BeamsManager beamsManager = new BeamsManager();
-	private AliensManager aliensManager = new AliensManager(3, 20, 100, 30, 30, 50, Color.WHITE);
-	private Turret turret = new Turret(200, 600, 30, 30, 10, Color.GREEN);
+	private AliensManager aliensManager = new AliensManager(3, 0, 100, 30, 30, 30, Color.WHITE);
+	private Player player = new Player();
 
 	public BeamsManager beams() {
 		return beamsManager;
@@ -20,13 +24,13 @@ public class LevelScene extends Scene {
 	public void render(Graphics2D graphics) {
 		if (!beamsManager.isEmpty()) beamsManager.render(graphics);
 		aliensManager.render(graphics);
-		turret.render(graphics);
+		player.turret().render(graphics);
 	}
 
 	@Override
 	public void update() {
 		aliensManager.update(this);
-		turret.update(this);
+		player.turret().update(this);
 		beamsManager.update(this);
 	}
 
@@ -39,7 +43,7 @@ public class LevelScene extends Scene {
 	}
 
 	public Turret turret() {
-		return turret;
+		return player.turret();
 	}
 }
 

@@ -1,5 +1,7 @@
 package reivajh06.spaceinvaders;
 
+import reivajh06.spaceinvaders.entities.Alien;
+
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -9,6 +11,7 @@ public class AlienRow implements Renderable, Iterable<Alien> {
 
 	private List<Alien> aliens = new ArrayList<>();
 	private int separation = 50;
+	private int aliensDestroyed = 0;
 
 	public AlienRow(int rowBeginning, int rowY, int aliensWidth, int aliensHeight, int aliensSpeed, Color aliensColor) {
 		this(10, rowBeginning, rowY, aliensWidth, aliensHeight, aliensSpeed, aliensColor);
@@ -43,6 +46,7 @@ public class AlienRow implements Renderable, Iterable<Alien> {
 			Alien alien = iterator.next();
 
 			if(alien.isDestroyed()) {
+				aliensDestroyed += 1;
 				iterator.remove();
 			} else {
 				alien.update(scene);
@@ -54,25 +58,30 @@ public class AlienRow implements Renderable, Iterable<Alien> {
 		}
 
 		if(aliens.getFirst().checkBorders(scene) || aliens.getLast().checkBorders(scene)) {
-			Alien firstAlien = aliens.getFirst();
-			Alien lastAlien = aliens.getLast();
+			int offset;
 
-			firstAlien.setPosition(firstAlien.clamp(firstAlien.x(), 0, scene.window().contentWidth()), firstAlien.y());
-			lastAlien.setPosition(lastAlien.clamp(lastAlien.x(), 0, scene.window().contentWidth()), lastAlien.y());
-			descend();
+			if(getDirection() == 1) {
+				offset = scene.window().contentWidth() - aliens.getLast().x() + aliens.getLast().width();
+			} else {
+				offset = aliens.getFirst().x();
+			}
+			descend(offset);
 		}
 	}
 
-	public void descend() {
+	public void descend(int offset) {
 		for(Alien alien : aliens) {
 			alien.changeDirection();
-			alien.framesStill = 60;
-			alien.setPosition(alien.x(), alien.y() + alien.height() + 30);
+			alien.setPosition(alien.x() - offset + alien.getDirection(), alien.y() + alien.height() + 30);
 		}
 	}
 
 	public boolean isEmpty() {
 		return this.aliens.isEmpty();
+	}
+
+	public int getDirection() {
+		return !aliens.isEmpty() ? aliens.getFirst().getDirection() : 0;
 	}
 
 	public void render(Graphics2D graphics) {
