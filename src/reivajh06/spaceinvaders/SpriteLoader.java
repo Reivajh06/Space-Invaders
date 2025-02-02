@@ -1,5 +1,6 @@
+package reivajh06.spaceinvaders;
+
 import javax.imageio.ImageIO;
-import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -12,7 +13,7 @@ public class SpriteLoader {
 		this.spritesheet = ImageIO.read(new File(sheetPath));
 	}
 
-	public void prepareSprites(BufferedImage spritesheet) throws IOException {
+	public void load() throws IOException {
 		for(int x = 0; x < spritesheet.getWidth(); x++) {
 			for(int y  = 0; y < spritesheet.getHeight(); y++) {
 				int color = spritesheet.getRGB(x, y);
@@ -24,6 +25,5 @@ public class SpriteLoader {
 				}
 			}
 		}
-		ImageIO.write(spritesheet, "png", new File("modifiedSpriteSheet.png"));
 	}
 }

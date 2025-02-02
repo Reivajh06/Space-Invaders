@@ -1,5 +1,6 @@
+package reivajh06.spaceinvaders;
+
 import naitsirc98.blue.Game;
-import reivajh06.spaceinvaders.SpaceInvaders;
 
 public class Main {
 

@@ -14,12 +14,18 @@ public class SpriteLoaderTests {
 		prepareSprites(spritesheet);
 
 		int y = 0;
-		int x = 1;
+		int x = 29;
 		int offset = 1;
 		int width = 110;
 		int height = 120;
 
+		int limits = spritesheet.getWidth();
+		System.out.println(limits / width);
+		System.out.println(spritesheet.getRGB(0,0));
+
 		BufferedImage subImage = spritesheet.getSubimage(x * width + offset, y * height + offset, width, height);
+
+
 
 		ImageIO.write(spritesheet, "png", new File("modifiedSpriteSheet.png"));
 		ImageIO.write(subImage, "png", new File("sprite.png"));
@@ -42,7 +48,7 @@ public class SpriteLoaderTests {
 		}
 	}
 
-	public static void subImage() {
-
+	public static BufferedImage sprite(int x, int y, int offset, int width, int height, BufferedImage spritesheet) {
+		return spritesheet.getSubimage(x * width + offset, y * height + offset, width, height);
 	}
 }
