@@ -1,12 +1,21 @@
 package reivajh06.spaceinvaders;
 
 import naitsirc98.blue.Game;
+import reivajh06.spaceinvaders.sprites.Spritesheet;
+import reivajh06.spaceinvaders.sprites.SpritesheetFactory;
 
 import java.awt.*;
+import java.io.IOException;
 
 public class SpaceInvaders extends Game {
 
 	private LevelScene scene = new LevelScene(this);
+	private Spritesheet spritesheet;
+
+
+	public Spritesheet spritesheet() {
+		return spritesheet;
+	}
 
 	@Override
 	protected String title() {
@@ -15,7 +24,11 @@ public class SpaceInvaders extends Game {
 
 	@Override
 	protected void onStart() {
-
+		try {
+			spritesheet = SpritesheetFactory.create("C:\\Users\\ReivajH06\\Desktop\\dev\\SpaceInvaders\\resources\\modifiedSpriteSheet.png");
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
 	}
 
 	@Override

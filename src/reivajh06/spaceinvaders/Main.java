@@ -8,5 +8,4 @@ public class Main {
 		Game game = new SpaceInvaders();
 		game.launch();
 	}
-
 }

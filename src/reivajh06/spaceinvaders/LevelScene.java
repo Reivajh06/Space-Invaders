@@ -9,7 +9,7 @@ import java.awt.*;
 public class LevelScene extends Scene {
 
 	private BeamsManager beamsManager = new BeamsManager();
-	private AliensManager aliensManager = new AliensManager(3, 0, 100, 30, 30, 30, Color.WHITE);
+	private AliensManager aliensManager = new AliensManager(20,3, 0, 100, 30, 30, 30, Color.WHITE);
 	private Player player = new Player();
 
 	public BeamsManager beams() {

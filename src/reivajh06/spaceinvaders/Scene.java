@@ -14,5 +14,9 @@ public abstract class Scene implements Renderable{
 		return game.window();
 	}
 
+	public SpaceInvaders game() {
+		return game;
+	}
+
 	public abstract void update();
 }
