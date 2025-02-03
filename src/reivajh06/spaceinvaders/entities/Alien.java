@@ -93,5 +93,4 @@ public class Alien extends Entity {
 			cooldownCounter = cooldown;
 		}
 	}
-
 }
