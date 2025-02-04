@@ -9,5 +9,6 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="blue-game-engine" level="project" />
+    <orderEntry type="library" name="blue-game-engine1" level="project" />
   </component>
 </module>
