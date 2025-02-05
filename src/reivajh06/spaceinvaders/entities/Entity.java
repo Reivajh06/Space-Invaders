@@ -26,9 +26,10 @@ public abstract class Entity implements Renderable {
 		this.color = color;
 	}
 
-	public Entity(Position position, int width, int height, Color color, int speed, SpriteManager sprites) {
+	public Entity(Position position, int width, int height, Color color, int speed, SpriteManager sprites, BufferedImage spriteDisplayed) {
 		this(position.x(), position.y(), width, height, speed, color);
 		this.sprites = sprites;
+		this.spriteDisplayed = spriteDisplayed;
 	}
 
 	public int x() {

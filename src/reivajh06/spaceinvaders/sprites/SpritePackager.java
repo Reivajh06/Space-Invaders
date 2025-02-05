@@ -36,7 +36,6 @@ public class SpritePackager {
 			i += 2;
 			alienType++;
 		}
-
 		return packagedAlienSprites;
 	}
 }
