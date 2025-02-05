@@ -4,48 +4,32 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Spritesheet {
 
-	private final List<BufferedImage> sprites;
-	private final List<BufferedImage> alienSprites;
-	private final BufferedImage turretSprite;
-	private final BufferedImage alienBeamSprite;
-	private final List<BufferedImage> spritesWhenDestroyed;
+	private final List<BufferedImage> images;
+	private final Map<String, List<BufferedImage>> spritesPackaged;
 
-	public Spritesheet(List<BufferedImage> sprites) {
-		this.sprites = sprites;
-		turretSprite = sprites.get(21);
-		alienSprites = sprites.subList(0, 21);
-		alienBeamSprite = sprites.get(23);
-		spritesWhenDestroyed = new ArrayList<>(List.of(sprites.get(22), sprites.get(24)));
+	public Spritesheet(List<BufferedImage> images, Map<String, List<BufferedImage>> spritesPackaged) {
+		this.images = images;
+		this.spritesPackaged = spritesPackaged;
 	}
 
-	public List<BufferedImage> sprites() {
-		return sprites;
-	}
-
-	public List<BufferedImage> getAlienSprites() {
-		return alienSprites;
-	}
-
-	public BufferedImage getTurretSprite() {
-		return turretSprite;
-	}
-
-	public BufferedImage getAlienBeamSprite() {
-		return alienBeamSprite;
-	}
-
-	public List<BufferedImage> getSpritesWhenDestroyed() {
-		return spritesWhenDestroyed;
+	public List<BufferedImage> images() {
+		return images;
 	}
 
 	public void viewSprites() throws IOException {
-		for(BufferedImage image : sprites) {
-			ImageIO.write(image, "png", new File("sprite" + sprites.indexOf(image) + ".png"));
+		int x = 0;
+		for(BufferedImage image : images) {
+			ImageIO.write(image, "png", new File("sprite" + x++ + ".png"));
 		}
+	}
+
+	public List<BufferedImage> getPackage(String key) {
+		return spritesPackaged.get(key);
 	}
 }

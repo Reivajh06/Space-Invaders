@@ -14,6 +14,7 @@ public abstract class Entity implements Renderable {
 	protected int height;
 	protected int speed;
 	protected SpriteManager sprites = null;
+	protected BufferedImage spriteDisplayed;
 	protected Color color;
 	protected boolean destroyed = false;
 
@@ -25,9 +26,10 @@ public abstract class Entity implements Renderable {
 		this.color = color;
 	}
 
-	public Entity(Position position, int width, int height, Color color, int speed, SpriteManager sprites) {
+	public Entity(Position position, int width, int height, Color color, int speed, SpriteManager sprites, BufferedImage spriteDisplayed) {
 		this(position.x(), position.y(), width, height, speed, color);
 		this.sprites = sprites;
+		this.spriteDisplayed = spriteDisplayed;
 	}
 
 	public int x() {
@@ -68,6 +70,10 @@ public abstract class Entity implements Renderable {
 
 	public void setWidth(int width) {
 		this.width = width;
+	}
+
+	public void setSpriteDisplayed() {
+		this.spriteDisplayed = sprites.nextSprite(this);
 	}
 
 	public void setHeight(int height) {

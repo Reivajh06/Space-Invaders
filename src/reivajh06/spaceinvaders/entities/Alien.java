@@ -2,7 +2,6 @@ package reivajh06.spaceinvaders.entities;
 
 import reivajh06.spaceinvaders.managers.BeamsManager;
 import reivajh06.spaceinvaders.LevelScene;
-import reivajh06.spaceinvaders.managers.SpriteManager;
 
 import java.awt.*;
 import java.util.Random;
@@ -50,7 +49,7 @@ public class Alien extends Entity {
 	@Override
 	public void render(Graphics2D graphics) {
 		if(sprites != null) {
-			graphics.drawImage(sprites.currentSprite(), x(), y(), 50, 60, null);
+			graphics.drawImage(spriteDisplayed, x(), y(), null);
 
 		} else {
 			graphics.setColor(color());
@@ -60,11 +59,7 @@ public class Alien extends Entity {
 
 	public void update(LevelScene scene) {
 		if(sprites != null) {
-			sprites.update(this);
-		} else {
-			sprites = new SpriteManager(
-					scene.game().spritesheet().getAlienSprites(),
-					scene.game().spritesheet().getSpritesWhenDestroyed().getFirst());
+			spriteDisplayed = sprites.nextSprite(this);
 		}
 
 		if(destroyed) return;
@@ -93,4 +88,5 @@ public class Alien extends Entity {
 			cooldownCounter = cooldown;
 		}
 	}
+
 }
