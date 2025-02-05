@@ -13,7 +13,6 @@ public class SpritesheetFactory {
 		BufferedImage normalisedSheet = SpritesheetNormalizer.normalize(spriteSheet);
 		List<BufferedImage> cutter = SpritesheetCutter.cut(normalisedSheet, 1, 110, 120);
 		List<BufferedImage> checkedSprites = SpriteSheetChecker.check(cutter);
-		Spritesheet spritesheet = new Spritesheet(checkedSprites);
-		return spritesheet;
+		return new Spritesheet(checkedSprites, SpritePackager.packageSprites(checkedSprites));
 	}
 }

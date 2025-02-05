@@ -14,6 +14,7 @@ public abstract class Entity implements Renderable {
 	protected int height;
 	protected int speed;
 	protected SpriteManager sprites = null;
+	protected BufferedImage spriteDisplayed;
 	protected Color color;
 	protected boolean destroyed = false;
 
@@ -68,6 +69,10 @@ public abstract class Entity implements Renderable {
 
 	public void setWidth(int width) {
 		this.width = width;
+	}
+
+	public void setSpriteDisplayed() {
+		this.spriteDisplayed = sprites.nextSprite(this);
 	}
 
 	public void setHeight(int height) {

@@ -49,7 +49,7 @@ public class Alien extends Entity {
 	@Override
 	public void render(Graphics2D graphics) {
 		if(sprites != null) {
-			graphics.drawImage(sprites.currentSprite(), x(), y(), null);
+			graphics.drawImage(spriteDisplayed, x(), y(), null);
 
 		} else {
 			graphics.setColor(color());
@@ -59,7 +59,7 @@ public class Alien extends Entity {
 
 	public void update(LevelScene scene) {
 		if(sprites != null) {
-			sprites.update(this);
+			spriteDisplayed = sprites.nextSprite(this);
 		}
 
 		if(destroyed) return;

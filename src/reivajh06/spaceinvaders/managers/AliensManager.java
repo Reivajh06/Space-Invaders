@@ -5,6 +5,7 @@ import reivajh06.spaceinvaders.LevelScene;
 import reivajh06.spaceinvaders.Renderable;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -13,6 +14,7 @@ public class AliensManager implements Renderable, Iterable<AlienRow> {
 
 	private List<AlienRow> aliensRows = new ArrayList<>();
 	private int heightSeparation = 150;
+	private List<BufferedImage> sprites = null;
 
 	public AliensManager(int rows, int rowBeginning, int rowY, int aliensWidth, int aliensHeight, int aliensSpeed, Color aliensColor) {
 		this(10, rows, rowBeginning, rowY, aliensWidth, aliensHeight, aliensSpeed, aliensColor);

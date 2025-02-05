@@ -1,33 +1,42 @@
 package reivajh06.spaceinvaders.sprites;
 
 import java.awt.image.BufferedImage;
-import java.nio.Buffer;
 import java.util.*;
 
 public class SpritePackager {
 
-	public static Map<String, BufferedImage> entitySprites(List<BufferedImage> spritesToPackage) {
-		Map<String, BufferedImage> spritesPackaged = new LinkedHashMap<>();
-
+	public static Map<String, List<BufferedImage>> packageSprites(List<BufferedImage> spritesToPackage) {
 		BufferedImage spriteWhenDestroyed = spritesToPackage.getLast();
 		List<BufferedImage> alienSprites = spritesToPackage.subList(0, 20);
+
+		Map<String, List<BufferedImage>> spritesPackaged = packageAlienSprites(alienSprites, spriteWhenDestroyed);
+
 		List<BufferedImage> specialAlien = spritesToPackage.subList(20, 21);
+		spritesPackaged.put("specialAlien", specialAlien);
+
 		List<BufferedImage> turretSprites = spritesToPackage.subList(21, 23);
+		spritesPackaged.put("turret", turretSprites);
+
 		List<BufferedImage> alienBeamSprites = spritesToPackage.subList(23, spritesToPackage.size());
+		spritesPackaged.put("alienBeam", alienBeamSprites);
 
 		return spritesPackaged;
 	}
 
-	private static List<List<BufferedImage>> packageAlienSprites(List<BufferedImage> alienSprites, BufferedImage spriteWhenDestroyed) {
-		List<List<BufferedImage>> aliensPackaged = new ArrayList<>();
+	private static Map<String, List<BufferedImage>> packageAlienSprites(List<BufferedImage> alienSprites, BufferedImage spriteWhenDestroyed) {
+		Map<String, List<BufferedImage>> packagedAlienSprites = new HashMap<>();
 
-		for(int i = 0; i <= alienSprites.size() - 2; i++) {
-			List<BufferedImage> alienPackaged = new ArrayList<>(List.of(
-					alienSprites.get(i),
+		int alienType = 1;
+		int i = 0;
+
+		while(i < alienSprites.size()) {
+			packagedAlienSprites.put("alien" + alienType, new ArrayList<>(List.of(alienSprites.get(i),
 					alienSprites.get(i + 1),
-					alienSprites.getLast()));
-			aliensPackaged.add(alienPackaged);
+					spriteWhenDestroyed)));
+			i += 2;
+			alienType++;
 		}
-		return aliensPackaged;
+
+		return packagedAlienSprites;
 	}
 }

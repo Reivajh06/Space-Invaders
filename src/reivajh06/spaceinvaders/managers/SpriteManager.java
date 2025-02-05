@@ -9,34 +9,26 @@ public class SpriteManager {
 
 	private final List<BufferedImage> images;
 	private final BufferedImage spriteWhenDestroyed;
-	private int currentSprite = 0;
-	private boolean renderIfDestroyed = false;
+	private int nextSprite = 0;
 	private int framesPerImage = 30;
 
-	public SpriteManager(List<BufferedImage> images, BufferedImage spriteWhenDestroyed) {
+	public SpriteManager(List<BufferedImage> images) {
+		this.spriteWhenDestroyed = images.getLast();
+		images.removeLast();
 		this.images = images;
-		this.spriteWhenDestroyed = spriteWhenDestroyed;
 	}
 
-	public void update(Entity entity) {
+	public BufferedImage nextSprite(Entity entity) {
 		if(entity.isDestroyed()) {
-			renderIfDestroyed = true;
-		} else {
-			if(framesPerImage == 0) {
-				currentSprite++;
-				currentSprite %= images.size();
-				framesPerImage = 30;
-			} else {
-				framesPerImage--;
-			}
+			return spriteWhenDestroyed;
+		}
+
+		if(framesPerImage != 0) {
+			framesPerImage--;
+			return images.get(nextSprite);
+		}
+		framesPerImage = 30;
+		return images.get(nextSprite % images.size());
 		}
 	}
 
-	public BufferedImage currentSprite() {
-		return images.get(currentSprite);
-	}
-
-	public int currentSpriteIndex() {
-		return currentSprite;
-	}
-}
