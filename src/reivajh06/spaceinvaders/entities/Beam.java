@@ -80,9 +80,10 @@ public class Beam extends Entity {
 	public void render(Graphics2D graphics) {
 		if(isAlienBeam()) {
 			graphics.drawImage(spriteDisplayed, x(), y(), null);
+		} else{
+			graphics.setColor(Color.RED);
+			graphics.fillRoundRect(x(), y(), 3, 20, 4, 4);
 		}
-		graphics.setColor(Color.RED);
-		graphics.fillRoundRect(x(), y(), 3, 20, 4, 4);
 	}
 
 	public void update(LevelScene scene) {

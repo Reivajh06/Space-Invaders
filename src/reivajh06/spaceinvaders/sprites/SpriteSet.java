@@ -13,7 +13,12 @@ public class SpriteSet {
 	private int framesPerImage = 30;
 
 	public SpriteSet(List<BufferedImage> images) {
-		this.spriteWhenDestroyed = images.removeLast();
+		if(images.isEmpty()) {
+			System.out.println("Collection empty!!");
+		} else {
+			System.out.println("Collection not empty");
+		}
+		this.spriteWhenDestroyed = images.getLast();
 		this.images = images;
 	}
 

@@ -32,6 +32,8 @@ public class SpritePackager {
 			packagedAlienSprites.put("alien" + alienType, new ArrayList<>(List.of(alienSprites.get(i),
 					alienSprites.get(i + 1),
 					spriteWhenDestroyed)));
+			System.out.println("Collection number" + alienType + " added");
+			System.out.println("key: " + "alien" + alienType);
 			alienType++;
 		}
 		return packagedAlienSprites;

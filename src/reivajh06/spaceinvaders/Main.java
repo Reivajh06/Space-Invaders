@@ -7,7 +7,7 @@ import java.io.IOException;
 public class Main {
 
 	public static void main(String[] args) throws IOException {
-		Game game = new SpaceInvaders("C:\\Users\\ReivajH06\\Desktop\\dev\\SpaceInvaders\\resources\\modifiedSpriteSheet.png");
+		Game game = new SpaceInvaders("C:/Users/reiva/Desktop/dev/Space-Invaders/resources/modifiedSpriteSheet.png");
 		game.launch();
 	}
 }
