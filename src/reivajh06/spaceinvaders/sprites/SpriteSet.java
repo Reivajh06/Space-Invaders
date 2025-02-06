@@ -10,10 +10,9 @@ public class SpriteSet {
 	private final List<BufferedImage> images;
 	private final BufferedImage spriteWhenDestroyed;
 	private int nextSprite = 0;
-	private int framesPerImage = 30;
 
 	public SpriteSet(List<BufferedImage> images) {
-		if(images.isEmpty()) {
+		if (images.isEmpty()) {
 			System.out.println("Collection empty!!");
 		} else {
 			System.out.println("Collection not empty");
@@ -23,16 +22,17 @@ public class SpriteSet {
 	}
 
 	public BufferedImage nextSprite(Entity entity) {
-		if(entity.isDestroyed()) {
+		if (entity.isDestroyed()) {
 			return spriteWhenDestroyed;
 		}
 
-		if(framesPerImage != 0) {
-			framesPerImage--;
-			return images.get(nextSprite);
+		if(nextSprite == 0) {
+			nextSprite = 1;
+		} else {
+			nextSprite = 0;
 		}
-		framesPerImage = 30;
-		return images.get(nextSprite % images.size());
-		}
+
+		return images.get(nextSprite);
 	}
+}
 

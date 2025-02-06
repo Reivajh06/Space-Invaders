@@ -24,7 +24,7 @@ public class LevelScene extends Scene {
 	public LevelScene(SpaceInvaders game, Spritesheet sprites) throws IOException {
 		super(game);
 		this.sprites = sprites;
-		aliensManager = new AliensManager(20,3, 0, 100, 20, 20, 30, Color.WHITE, sprites.getPackages());
+		aliensManager = new AliensManager(3,1, 0, 100, 70, 70, 30, Color.WHITE, sprites.getPackages());
 	}
 
 	@Override

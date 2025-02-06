@@ -12,7 +12,7 @@ import java.util.List;
 public class AlienRow implements Renderable, Iterable<Alien> {
 
 	private List<Alien> aliens = new ArrayList<>();
-	private int separation = 50;
+	private int separation = 70;
 	private int aliensDestroyed = 0;
 	private final List<BufferedImage> sprites;
 
