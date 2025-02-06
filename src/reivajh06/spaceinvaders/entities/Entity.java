@@ -2,7 +2,7 @@ package reivajh06.spaceinvaders.entities;
 
 import reivajh06.spaceinvaders.Position;
 import reivajh06.spaceinvaders.Renderable;
-import reivajh06.spaceinvaders.managers.SpriteManager;
+import reivajh06.spaceinvaders.sprites.SpriteSet;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -13,23 +13,21 @@ public abstract class Entity implements Renderable {
 	protected int width;
 	protected int height;
 	protected int speed;
-	protected SpriteManager sprites = null;
-	protected BufferedImage spriteDisplayed;
+	protected SpriteSet sprites = null;
 	protected Color color;
 	protected boolean destroyed = false;
 
-	public Entity(int x, int y, int width, int height, int speed, Color color) {
+	public Entity(int x, int y, int width, int height, Color color, int speed, SpriteSet sprites) {
 		this.position = new Position(x, y);
 		this.width = width;
 		this.height = height;
 		this.speed = speed;
 		this.color = color;
+		this.sprites = sprites;
 	}
 
-	public Entity(Position position, int width, int height, Color color, int speed, SpriteManager sprites, BufferedImage spriteDisplayed) {
-		this(position.x(), position.y(), width, height, speed, color);
-		this.sprites = sprites;
-		this.spriteDisplayed = spriteDisplayed;
+	public Entity(Position position, int width, int height, Color color, int speed, SpriteSet sprites) {
+		this(position.x(), position.y(), width, height, color, speed, sprites);
 	}
 
 	public int x() {
@@ -70,10 +68,6 @@ public abstract class Entity implements Renderable {
 
 	public void setWidth(int width) {
 		this.width = width;
-	}
-
-	public void setSpriteDisplayed() {
-		this.spriteDisplayed = sprites.nextSprite(this);
 	}
 
 	public void setHeight(int height) {

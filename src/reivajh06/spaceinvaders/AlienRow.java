@@ -1,8 +1,10 @@
 package reivajh06.spaceinvaders;
 
 import reivajh06.spaceinvaders.entities.Alien;
+import reivajh06.spaceinvaders.sprites.SpriteSet;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -12,21 +14,24 @@ public class AlienRow implements Renderable, Iterable<Alien> {
 	private List<Alien> aliens = new ArrayList<>();
 	private int separation = 50;
 	private int aliensDestroyed = 0;
+	private final List<BufferedImage> sprites;
 
-	public AlienRow(int rowBeginning, int rowY, int aliensWidth, int aliensHeight, int aliensSpeed, Color aliensColor) {
-		this(10, rowBeginning, rowY, aliensWidth, aliensHeight, aliensSpeed, aliensColor);
+	public AlienRow(int rowBeginning, int rowY, int aliensWidth, int aliensHeight, int aliensSpeed, Color aliensColor, List<BufferedImage> sprites) {
+		this(10, rowBeginning, rowY, aliensWidth, aliensHeight, aliensSpeed, aliensColor, sprites);
 	}
 
-	public AlienRow(int aliensInRow, int rowBeginning, int rowY, int aliensWidth, int aliensHeight, int aliensSpeed, Color aliensColor) {
+	public AlienRow(int aliensInRow, int rowBeginning, int rowY, int aliensWidth, int aliensHeight, int aliensSpeed, Color aliensColor, List<BufferedImage> sprites) {
 		if(aliensInRow == 0) {
 			throw new RuntimeException("An aliensRow must have at least one Alien!!");
 		} else {
 			int alienPosition = 0;
 
 			for(int i = 0; i < aliensInRow; i++) {
-				aliens.add(new Alien(rowBeginning + separation * alienPosition, rowY, aliensWidth, aliensHeight, aliensSpeed, aliensColor));
+				aliens.add(new Alien(rowBeginning + separation * alienPosition, rowY, aliensWidth, aliensHeight, aliensSpeed, aliensColor, new SpriteSet(sprites)));
 				alienPosition++;
 			}
+
+			this.sprites = sprites;
 		}
 	}
 

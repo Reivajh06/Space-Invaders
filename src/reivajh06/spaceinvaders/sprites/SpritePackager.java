@@ -27,13 +27,11 @@ public class SpritePackager {
 		Map<String, List<BufferedImage>> packagedAlienSprites = new HashMap<>();
 
 		int alienType = 1;
-		int i = 0;
 
-		while(i < alienSprites.size()) {
+		for(int i = 0; i < alienSprites.size(); i += 2) {
 			packagedAlienSprites.put("alien" + alienType, new ArrayList<>(List.of(alienSprites.get(i),
 					alienSprites.get(i + 1),
 					spriteWhenDestroyed)));
-			i += 2;
 			alienType++;
 		}
 		return packagedAlienSprites;

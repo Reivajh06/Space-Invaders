@@ -1,20 +1,19 @@
-package reivajh06.spaceinvaders.managers;
+package reivajh06.spaceinvaders.sprites;
 
 import reivajh06.spaceinvaders.entities.Entity;
 
 import java.awt.image.BufferedImage;
 import java.util.List;
 
-public class SpriteManager {
+public class SpriteSet {
 
 	private final List<BufferedImage> images;
 	private final BufferedImage spriteWhenDestroyed;
 	private int nextSprite = 0;
 	private int framesPerImage = 30;
 
-	public SpriteManager(List<BufferedImage> images) {
-		this.spriteWhenDestroyed = images.getLast();
-		images.removeLast();
+	public SpriteSet(List<BufferedImage> images) {
+		this.spriteWhenDestroyed = images.removeLast();
 		this.images = images;
 	}
 

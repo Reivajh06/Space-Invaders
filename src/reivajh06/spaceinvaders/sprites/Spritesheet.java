@@ -32,4 +32,8 @@ public class Spritesheet {
 	public List<BufferedImage> getPackage(String key) {
 		return spritesPackaged.get(key);
 	}
+
+	public Map<String, List<BufferedImage>> getPackages() {
+		return spritesPackaged;
+	}
 }

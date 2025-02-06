@@ -14,7 +14,7 @@ public class Turret extends Entity {
 	private int cooldown = 30;
 
 	public Turret(int x, int y, int width, int height, int speed, Color color) {
-		super(x, y, width, height, speed, color);
+		super(x, y, width, height, color, speed, null);
 
 		this.speed = speed;
 	}

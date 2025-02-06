@@ -2,20 +2,23 @@ package reivajh06.spaceinvaders.entities;
 
 import reivajh06.spaceinvaders.AlienRow;
 import reivajh06.spaceinvaders.LevelScene;
+import reivajh06.spaceinvaders.sprites.SpriteSet;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
 
 public class Beam extends Entity {
 
 	protected int direction;
+	protected BufferedImage spriteDisplayed;
 
-	public Beam(int x, int y, int direction, int speed) {
-		super(x, y, 3, 20, speed, Color.RED);
+	public Beam(int x, int y, int direction, int speed, SpriteSet spriteSet) {
+		super(x, y, 3, 20, Color.RED, speed, spriteSet);
 		this.direction = direction;
 	}
 
 	public Beam(int x, int y, int direction, Color color) {
-		super(x, y, 3, 20, 5, color);
+		super(x, y, 3, 20, color, 5, null);
 		this.direction = direction;
 	}
 
@@ -75,11 +78,15 @@ public class Beam extends Entity {
 
 	@Override
 	public void render(Graphics2D graphics) {
+		if(isAlienBeam()) {
+			graphics.drawImage(spriteDisplayed, x(), y(), null);
+		}
 		graphics.setColor(Color.RED);
 		graphics.fillRoundRect(x(), y(), 3, 20, 4, 4);
 	}
 
 	public void update(LevelScene scene) {
+		spriteDisplayed = sprites.nextSprite(this);
 		setPosition(x(), y() + speed() * direction);
 		checkCollision(scene);
 	}

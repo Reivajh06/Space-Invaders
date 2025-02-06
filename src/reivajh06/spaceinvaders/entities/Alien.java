@@ -2,8 +2,10 @@ package reivajh06.spaceinvaders.entities;
 
 import reivajh06.spaceinvaders.managers.BeamsManager;
 import reivajh06.spaceinvaders.LevelScene;
+import reivajh06.spaceinvaders.sprites.SpriteSet;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.util.Random;
 
 public class Alien extends Entity {
@@ -12,9 +14,10 @@ public class Alien extends Entity {
 	protected int cooldownCounter;
 	protected int framesStill = 60;
 	protected int direction = 1;
+	protected BufferedImage spriteDisplayed;
 
-	public Alien(int x, int y, int width, int height, int speed, Color color) {
-		super(x, y, width, height, speed, color);
+	public Alien(int x, int y, int width, int height, int speed, Color color, SpriteSet spriteSet) {
+		super(x, y, width, height, color, speed, spriteSet);
 		Random random = new Random();
 		cooldown = random.nextInt(0, 1000) + 100;
 		cooldownCounter = random.nextInt(cooldown) + 1000;

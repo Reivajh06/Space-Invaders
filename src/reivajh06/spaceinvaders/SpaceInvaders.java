@@ -9,12 +9,14 @@ import java.io.IOException;
 
 public class SpaceInvaders extends Game {
 
-	private LevelScene scene = new LevelScene(this);
+	private String sheetPath;
 	private Spritesheet spritesheet;
+	private LevelScene scene;
 
-
-	public Spritesheet spritesheet() {
-		return spritesheet;
+	public SpaceInvaders(String sheetPath) throws IOException {
+		this.sheetPath = sheetPath;
+		spritesheet = SpritesheetFactory.create(sheetPath);
+		scene = new LevelScene(this, spritesheet);
 	}
 
 	@Override
@@ -24,11 +26,13 @@ public class SpaceInvaders extends Game {
 
 	@Override
 	protected void onStart() {
-		try {
-			spritesheet = SpritesheetFactory.create("C:\\Users\\ReivajH06\\Desktop\\dev\\SpaceInvaders\\resources\\modifiedSpriteSheet.png");
+		/*try {
+			spritesheet = SpritesheetFactory.create(sheetPath);
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		}
+		*/
+
 	}
 
 	@Override
