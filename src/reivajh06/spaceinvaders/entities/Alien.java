@@ -6,6 +6,7 @@ import reivajh06.spaceinvaders.sprites.SpriteSet;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.util.List;
 import java.util.Random;
 
 public class Alien extends Entity {
@@ -15,12 +16,14 @@ public class Alien extends Entity {
 	protected int framesStill = 60;
 	protected int direction = 1;
 	protected BufferedImage spriteDisplayed;
+	protected SpriteSet beamSprites;
 
-	public Alien(int x, int y, int width, int height, int speed, Color color, SpriteSet spriteSet) {
+	public Alien(int x, int y, int width, int height, int speed, Color color, SpriteSet spriteSet, SpriteSet beamSpriteSet) {
 		super(x, y, width, height, color, speed, spriteSet);
 		Random random = new Random();
 		cooldown = random.nextInt(0, 1000) + 100;
 		cooldownCounter = random.nextInt(cooldown) + 1000;
+		this.beamSprites = beamSpriteSet;
 	}
 
 	public int getDirection() {
@@ -84,8 +87,9 @@ public class Alien extends Entity {
 		cooldownCounter--;
 
 		if(cooldownCounter <= 0) {
-			beamsManager.addBeam(new Beam(x() + width() / 2 + 10, y() + height() + 1, 1, Color.RED));
+			beamsManager.addBeam(new Beam(x() + width() / 2 + 10, y() + height() + 2, 1, 5, beamSprites));
 			cooldownCounter = cooldown;
+			System.out.println("Beam shot");
 		}
 	}
 

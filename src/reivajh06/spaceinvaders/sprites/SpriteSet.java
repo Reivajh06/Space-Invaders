@@ -26,12 +26,17 @@ public class SpriteSet {
 			return spriteWhenDestroyed;
 		}
 
-		if(nextSprite == 0) {
-			nextSprite = 1;
-		} else {
-			nextSprite = 0;
+		switch (images.size()) {
+			case 1, 2:
+				nextSprite = 0;
+				break;
+			case 3:
+				if(nextSprite == 0) {
+					nextSprite = 1;
+				} else {
+					nextSprite = 0;
+				}
 		}
-
 		return images.get(nextSprite);
 	}
 }

@@ -27,7 +27,7 @@ public class AliensManager implements Renderable, Iterable<AlienRow> {
 	public AliensManager(int aliensInRow, int rows, int rowBeginning, int rowY, int aliensWidth, int aliensHeight, int aliensSpeed, Color aliensColor, Map<String, List<BufferedImage>> sprites) {
 		for(int i = 0; i < rows; i++) {
 			System.out.println("alien" + (i+1));
-			aliensRows.add(new AlienRow(aliensInRow, rowBeginning, rowY + heightSeparation * i, aliensWidth, aliensHeight, aliensSpeed, aliensColor, sprites.get("alien" + (i + 1))));
+			aliensRows.add(new AlienRow(aliensInRow, rowBeginning, rowY + heightSeparation * i, aliensWidth, aliensHeight, aliensSpeed, aliensColor, sprites.get("alien" + (i + 1)), sprites.get("alienBeam")));
 		}
 
 		this.sprites = sprites;
