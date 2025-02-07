@@ -21,6 +21,10 @@ public class SpriteSet {
 		this.images = images;
 	}
 
+	public BufferedImage sprite(int i) {
+		return images.get(i);
+	}
+
 	public BufferedImage nextSprite(Entity entity) {
 		if (entity.isDestroyed()) {
 			return spriteWhenDestroyed;

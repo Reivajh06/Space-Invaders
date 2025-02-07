@@ -22,7 +22,7 @@ public class Alien extends Entity {
 		super(x, y, width, height, color, speed, spriteSet);
 		Random random = new Random();
 		cooldown = random.nextInt(0, 1000) + 100;
-		cooldownCounter = random.nextInt(cooldown) + 1000;
+		cooldownCounter = random.nextInt(cooldown) + 100;
 		this.beamSprites = beamSpriteSet;
 	}
 

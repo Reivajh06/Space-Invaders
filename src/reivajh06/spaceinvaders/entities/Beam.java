@@ -9,16 +9,19 @@ import java.awt.image.BufferedImage;
 
 public class Beam extends Entity {
 
+	private static final int DEFAULT_WIDTH = 65;
+	private static final int DEFAULT_HEIGHT = 65;
+
 	protected int direction;
 	protected BufferedImage spriteDisplayed;
 
 	public Beam(int x, int y, int direction, int speed, SpriteSet spriteSet) {
-		super(x, y, 10, 10, Color.RED, speed, spriteSet);
+		super(x, y, DEFAULT_WIDTH, DEFAULT_HEIGHT, Color.RED, speed, spriteSet);
 		this.direction = direction;
 	}
 
 	public Beam(int x, int y, int direction, Color color) {
-		super(x, y, 10, 10, color, 5, null);
+		super(x, y, DEFAULT_WIDTH, DEFAULT_HEIGHT, color, 5, null);
 		this.direction = direction;
 	}
 
@@ -79,7 +82,7 @@ public class Beam extends Entity {
 	@Override
 	public void render(Graphics2D graphics) {
 		if(isAlienBeam()) {
-			graphics.drawImage(spriteDisplayed, x(), y(), width(), height(), null);
+			graphics.drawImage(sprites.sprite(0), x(), y(), width(), height(), null);
 		} else{
 			graphics.setColor(Color.RED);
 			graphics.fillRoundRect(x(), y(), 3, 20, 4, 4);
