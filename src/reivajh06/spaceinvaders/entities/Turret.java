@@ -6,15 +6,18 @@ import naitsirc98.blue.input.Mouse;
 import naitsirc98.blue.input.MouseButton;
 import reivajh06.spaceinvaders.managers.BeamsManager;
 import reivajh06.spaceinvaders.LevelScene;
+import reivajh06.spaceinvaders.sprites.SpriteSet;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
 
 public class Turret extends Entity {
 
 	private int cooldown = 30;
+	private BufferedImage spriteDisplayed;
 
-	public Turret(int x, int y, int width, int height, int speed, Color color) {
-		super(x, y, width, height, color, speed, null);
+	public Turret(int x, int y, int width, int height, int speed, Color color, SpriteSet sprites) {
+		super(x, y, width, height, color, speed, sprites);
 
 		this.speed = speed;
 	}
@@ -36,6 +39,7 @@ public class Turret extends Entity {
 	public void update(LevelScene scene) {
 		if(destroyed) return;
 
+		spriteDisplayed = sprites.nextSprite(this);
 		shoot(scene.beams());
 		move();
 		setPosition(clamp(x(), 0, scene.window().contentWidth()),y());
@@ -43,6 +47,10 @@ public class Turret extends Entity {
 
 	@Override
 	public void render(Graphics2D graphics) {
+		if(sprites != null) {
+			graphics.drawImage(spriteDisplayed, x(), y(), width(), height(), null);
+		}
+
 		if(!isDestroyed()) {
 			graphics.setColor(color);
 			graphics.fillRoundRect(x(), y(), width, height, 4, 4);

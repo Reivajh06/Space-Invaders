@@ -2,7 +2,10 @@ package reivajh06.spaceinvaders.sprites;
 
 import reivajh06.spaceinvaders.entities.Entity;
 
+import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 public class SpriteSet {
@@ -42,6 +45,14 @@ public class SpriteSet {
 				}
 		}
 		return images.get(nextSprite);
+	}
+
+	public void showSprite(int index) throws IOException {
+		ImageIO.write(images.get(index), "png", new File("sprite" + ".png"));
+	}
+
+	public int size() {
+		return images.size();
 	}
 }
 

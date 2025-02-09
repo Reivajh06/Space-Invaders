@@ -6,6 +6,7 @@ import reivajh06.spaceinvaders.sprites.SpriteSet;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.util.List;
 import java.util.Random;
 
@@ -22,7 +23,7 @@ public class Alien extends Entity {
 		super(x, y, width, height, color, speed, spriteSet);
 		Random random = new Random();
 		cooldown = random.nextInt(0, 1000) + 100;
-		cooldownCounter = random.nextInt(cooldown) + 100;
+		cooldownCounter = random.nextInt(cooldown) + 1000;
 		this.beamSprites = beamSpriteSet;
 	}
 
@@ -64,7 +65,10 @@ public class Alien extends Entity {
 	}
 
 	public void update(LevelScene scene) {
-		if(destroyed) return;
+		if(destroyed) {
+			spriteDisplayed = sprites.nextSprite(this);
+			return;
+		}
 
 		checkBorders(scene);
 
@@ -91,6 +95,10 @@ public class Alien extends Entity {
 			cooldownCounter = cooldown;
 			System.out.println("Beam shot");
 		}
+	}
+
+	public void alienDestroyed() {
+		this.spriteDisplayed = sprites.nextSprite(this);
 	}
 
 }

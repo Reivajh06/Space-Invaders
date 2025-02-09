@@ -16,6 +16,7 @@ public class AlienRow implements Renderable, Iterable<Alien> {
 	private int aliensDestroyed = 0;
 	private final List<BufferedImage> sprites;
 	private final List<BufferedImage> beamSprites;
+	private int framesDestroyed = 10;
 
 	public AlienRow(int rowBeginning, int rowY, int aliensWidth, int aliensHeight, int aliensSpeed, Color aliensColor, List<BufferedImage> alienSprites, List<BufferedImage> beamSprites) {
 		this(10, rowBeginning, rowY, aliensWidth, aliensHeight, aliensSpeed, aliensColor, alienSprites, beamSprites);
@@ -53,8 +54,15 @@ public class AlienRow implements Renderable, Iterable<Alien> {
 			Alien alien = iterator.next();
 
 			if(alien.isDestroyed()) {
+				alien.alienDestroyed();
 				aliensDestroyed += 1;
-				iterator.remove();
+
+				if(framesDestroyed == 0) {
+					iterator.remove();
+					framesDestroyed = 10;
+				} else {
+					framesDestroyed--;
+				}
 			} else {
 				alien.update(scene);
 			}

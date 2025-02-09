@@ -13,9 +13,9 @@ import java.io.IOException;
 public class LevelScene extends Scene {
 
 	private BeamsManager beamsManager = new BeamsManager();
-	private Player player = new Player();
 	private Spritesheet sprites;
 	private AliensManager aliensManager;
+	private Player player;
 
 	public BeamsManager beams() {
 		return beamsManager;
@@ -24,7 +24,8 @@ public class LevelScene extends Scene {
 	public LevelScene(SpaceInvaders game, Spritesheet sprites) throws IOException {
 		super(game);
 		this.sprites = sprites;
-		aliensManager = new AliensManager(3,1, 0, 100, 70, 70, 30, Color.WHITE, sprites.getPackages());
+		this.player = new Player(sprites.getPackage("turret"));
+		aliensManager = new AliensManager(10,2, 0, 100, 70, 70, 30, Color.WHITE, sprites.getPackages());
 	}
 
 	@Override

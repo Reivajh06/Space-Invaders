@@ -90,7 +90,9 @@ public class Beam extends Entity {
 	}
 
 	public void update(LevelScene scene) {
-		spriteDisplayed = sprites.nextSprite(this);
+		if(isAlienBeam()) {
+			spriteDisplayed = sprites.nextSprite(this);
+		}
 		setPosition(x(), y() + speed() * direction);
 		checkCollision(scene);
 	}

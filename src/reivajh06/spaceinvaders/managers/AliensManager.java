@@ -17,7 +17,7 @@ import java.util.Map;
 public class AliensManager implements Renderable, Iterable<AlienRow> {
 
 	private List<AlienRow> aliensRows = new ArrayList<>();
-	private int heightSeparation = 150;
+	private int heightSeparation = 50;
 	private Map<String, List<BufferedImage>> sprites;
 
 	public AliensManager(int rows, int rowBeginning, int rowY, int aliensWidth, int aliensHeight, int aliensSpeed, Color aliensColor, Map<String, List<BufferedImage>> sprites) {
