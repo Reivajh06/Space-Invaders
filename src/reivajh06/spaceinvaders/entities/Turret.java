@@ -18,14 +18,12 @@ public class Turret extends Entity {
 
 	public Turret(int x, int y, int width, int height, int speed, Color color, SpriteSet sprites) {
 		super(x, y, width, height, color, speed, sprites);
-
 		this.speed = speed;
 	}
 
 	public void move() {
 		moveLeft();
 		moveRight();
-
 	}
 
 	public void moveLeft() {
@@ -37,7 +35,7 @@ public class Turret extends Entity {
 	}
 
 	public void update(LevelScene scene) {
-		if(destroyed) return;
+		if(destroyed) spriteDisplayed = sprites.nextSprite(this);
 
 		spriteDisplayed = sprites.nextSprite(this);
 		shoot(scene.beams());
@@ -49,9 +47,7 @@ public class Turret extends Entity {
 	public void render(Graphics2D graphics) {
 		if(sprites != null) {
 			graphics.drawImage(spriteDisplayed, x(), y(), width(), height(), null);
-		}
-
-		if(!isDestroyed()) {
+		} else {
 			graphics.setColor(color);
 			graphics.fillRoundRect(x(), y(), width, height, 4, 4);
 		}
