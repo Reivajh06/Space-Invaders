@@ -1,6 +1,7 @@
 package reivajh06.spaceinvaders;
 
 import reivajh06.spaceinvaders.entities.Alien;
+import reivajh06.spaceinvaders.scenes.LevelScene;
 import reivajh06.spaceinvaders.sprites.SpriteSet;
 
 import java.awt.*;

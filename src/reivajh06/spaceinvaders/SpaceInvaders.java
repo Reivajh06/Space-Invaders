@@ -1,6 +1,7 @@
 package reivajh06.spaceinvaders;
 
 import naitsirc98.blue.Game;
+import reivajh06.spaceinvaders.scenes.LevelScene;
 import reivajh06.spaceinvaders.sprites.Spritesheet;
 import reivajh06.spaceinvaders.sprites.SpritesheetFactory;
 

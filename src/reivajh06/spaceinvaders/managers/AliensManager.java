@@ -1,11 +1,8 @@
 package reivajh06.spaceinvaders.managers;
 
 import reivajh06.spaceinvaders.AlienRow;
-import reivajh06.spaceinvaders.LevelScene;
+import reivajh06.spaceinvaders.scenes.LevelScene;
 import reivajh06.spaceinvaders.Renderable;
-import reivajh06.spaceinvaders.sprites.SpriteSet;
-import reivajh06.spaceinvaders.sprites.Spritesheet;
-import reivajh06.spaceinvaders.sprites.SpritesheetFactory;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -29,8 +26,11 @@ public class AliensManager implements Renderable, Iterable<AlienRow> {
 			System.out.println("alien" + (i+1));
 			aliensRows.add(new AlienRow(aliensInRow, rowBeginning, rowY + heightSeparation * i, aliensWidth, aliensHeight, aliensSpeed, aliensColor, sprites.get("alien" + (i + 1)), sprites.get("alienBeam")));
 		}
-
 		this.sprites = sprites;
+	}
+
+	public AliensManager(int aliensInRow, int rows, int rowBeginning, int rowY, int aliensWidth, int aliensHeight, int aliensSpeed, Color[] aliensColors, Map<String, List<BufferedImage>> sprites) {
+		
 	}
 
 	public List<AlienRow> aliensRows() {

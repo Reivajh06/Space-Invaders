@@ -1,11 +1,11 @@
-package reivajh06.spaceinvaders;
+package reivajh06.spaceinvaders.scenes;
 
+import reivajh06.spaceinvaders.Player;
+import reivajh06.spaceinvaders.SpaceInvaders;
 import reivajh06.spaceinvaders.entities.Turret;
 import reivajh06.spaceinvaders.managers.AliensManager;
 import reivajh06.spaceinvaders.managers.BeamsManager;
-import reivajh06.spaceinvaders.sprites.SpriteSet;
 import reivajh06.spaceinvaders.sprites.Spritesheet;
-import reivajh06.spaceinvaders.sprites.SpritesheetFactory;
 
 import java.awt.*;
 import java.io.IOException;

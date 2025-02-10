@@ -5,7 +5,7 @@ import naitsirc98.blue.input.Keyboard;
 import naitsirc98.blue.input.Mouse;
 import naitsirc98.blue.input.MouseButton;
 import reivajh06.spaceinvaders.managers.BeamsManager;
-import reivajh06.spaceinvaders.LevelScene;
+import reivajh06.spaceinvaders.scenes.LevelScene;
 import reivajh06.spaceinvaders.sprites.SpriteSet;
 
 import java.awt.*;
@@ -35,7 +35,10 @@ public class Turret extends Entity {
 	}
 
 	public void update(LevelScene scene) {
-		if(destroyed) spriteDisplayed = sprites.nextSprite(this);
+		if(destroyed) {
+			spriteDisplayed = sprites.nextSprite(this);
+			return;
+		}
 
 		spriteDisplayed = sprites.nextSprite(this);
 		shoot(scene.beams());

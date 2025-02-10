@@ -1,6 +1,6 @@
 package reivajh06.spaceinvaders.managers;
 
-import reivajh06.spaceinvaders.LevelScene;
+import reivajh06.spaceinvaders.scenes.LevelScene;
 import reivajh06.spaceinvaders.Renderable;
 import reivajh06.spaceinvaders.entities.Beam;
 

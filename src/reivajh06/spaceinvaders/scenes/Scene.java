@@ -1,8 +1,10 @@
-package reivajh06.spaceinvaders;
+package reivajh06.spaceinvaders.scenes;
 
 import naitsirc98.blue.Window;
+import reivajh06.spaceinvaders.Renderable;
+import reivajh06.spaceinvaders.SpaceInvaders;
 
-public abstract class Scene implements Renderable{
+public abstract class Scene implements Renderable {
 
 	protected final SpaceInvaders game;
 

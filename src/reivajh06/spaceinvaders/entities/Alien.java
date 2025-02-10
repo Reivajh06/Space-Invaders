@@ -1,13 +1,11 @@
 package reivajh06.spaceinvaders.entities;
 
 import reivajh06.spaceinvaders.managers.BeamsManager;
-import reivajh06.spaceinvaders.LevelScene;
+import reivajh06.spaceinvaders.scenes.LevelScene;
 import reivajh06.spaceinvaders.sprites.SpriteSet;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.IOException;
-import java.util.List;
 import java.util.Random;
 
 public class Alien extends Entity {
