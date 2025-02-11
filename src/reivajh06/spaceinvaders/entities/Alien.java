@@ -20,8 +20,8 @@ public class Alien extends Entity {
 	public Alien(int x, int y, int width, int height, int speed, Color color, SpriteSet spriteSet, SpriteSet beamSpriteSet) {
 		super(x, y, width, height, color, speed, spriteSet);
 		Random random = new Random();
-		cooldown = random.nextInt(0, 1000) + 100;
-		cooldownCounter = random.nextInt(cooldown) + 1000;
+		cooldown = random.nextInt(0, 1000) + 400;
+		cooldownCounter = random.nextInt(cooldown) + 200;
 		this.beamSprites = beamSpriteSet;
 	}
 
@@ -98,5 +98,4 @@ public class Alien extends Entity {
 	public void alienDestroyed() {
 		this.spriteDisplayed = sprites.nextSprite(this);
 	}
-
 }

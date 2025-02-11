@@ -1,6 +1,7 @@
 package reivajh06.spaceinvaders;
 
 import reivajh06.spaceinvaders.entities.Turret;
+import reivajh06.spaceinvaders.sprites.SpritePainter;
 import reivajh06.spaceinvaders.sprites.SpriteSet;
 
 import java.awt.*;
@@ -23,7 +24,7 @@ public class Player {
 
 	public Player(List<BufferedImage> sprites) {
 		this.sprites = sprites;
-		this.turret = new Turret(200, 600, 80, 80, 10, Color.GREEN, new SpriteSet(sprites));
+		this.turret = new Turret(200, 600, 80, 80, 10, Color.GREEN, new SpriteSet(SpritePainter.paint(sprites, Color.GREEN)));
 	}
 
 	public Turret turret() {

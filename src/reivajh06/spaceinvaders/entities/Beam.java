@@ -84,7 +84,7 @@ public class Beam extends Entity {
 		if(isAlienBeam()) {
 			graphics.drawImage(sprites.sprite(0), x(), y(), width(), height(), null);
 		} else{
-			graphics.setColor(Color.RED);
+			graphics.setColor(color);
 			graphics.fillRoundRect(x(), y(), 3, 20, 4, 4);
 		}
 	}
