@@ -3,12 +3,14 @@ package reivajh06.spaceinvaders.scenes;
 import reivajh06.spaceinvaders.Player;
 import reivajh06.spaceinvaders.SpaceInvaders;
 import reivajh06.spaceinvaders.entities.Turret;
+import reivajh06.spaceinvaders.managers.AliensConfig;
 import reivajh06.spaceinvaders.managers.AliensManager;
 import reivajh06.spaceinvaders.managers.BeamsManager;
 import reivajh06.spaceinvaders.sprites.Spritesheet;
 
 import java.awt.*;
 import java.io.IOException;
+import java.util.List;
 
 public class LevelScene extends Scene {
 
@@ -25,7 +27,7 @@ public class LevelScene extends Scene {
 		super(game);
 		this.sprites = sprites;
 		this.player = new Player(sprites.getPackage("turret"));
-		aliensManager = new AliensManager(10,2, 0, 100, 70, 70, 30, Color.WHITE, sprites.getPackages());
+		aliensManager = new AliensManager(new AliensConfig().sprites(sprites.getPackages()));
 	}
 
 	@Override

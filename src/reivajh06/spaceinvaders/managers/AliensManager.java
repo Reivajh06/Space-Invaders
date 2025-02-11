@@ -3,6 +3,7 @@ package reivajh06.spaceinvaders.managers;
 import reivajh06.spaceinvaders.AlienRow;
 import reivajh06.spaceinvaders.scenes.LevelScene;
 import reivajh06.spaceinvaders.Renderable;
+import reivajh06.spaceinvaders.sprites.SpritePainter;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -17,20 +18,19 @@ public class AliensManager implements Renderable, Iterable<AlienRow> {
 	private int heightSeparation = 50;
 	private Map<String, List<BufferedImage>> sprites;
 
-	public AliensManager(int rows, int rowBeginning, int rowY, int aliensWidth, int aliensHeight, int aliensSpeed, Color aliensColor, Map<String, List<BufferedImage>> sprites) {
-		this(10, rows, rowBeginning, rowY, aliensWidth, aliensHeight, aliensSpeed, aliensColor, sprites);
-	}
+	public AliensManager(AliensConfig config) {
+		this.sprites = config.sprites();
+		for(int i = 0; i < config.rows(); i++) {
+			Color alienRowColor = config.aliensColors().get(i % config.aliensColors().size());
 
-	public AliensManager(int aliensInRow, int rows, int rowBeginning, int rowY, int aliensWidth, int aliensHeight, int aliensSpeed, Color aliensColor, Map<String, List<BufferedImage>> sprites) {
-		for(int i = 0; i < rows; i++) {
 			System.out.println("alien" + (i+1));
-			aliensRows.add(new AlienRow(aliensInRow, rowBeginning, rowY + heightSeparation * i, aliensWidth, aliensHeight, aliensSpeed, aliensColor, sprites.get("alien" + (i + 1)), sprites.get("alienBeam")));
-		}
-		this.sprites = sprites;
-	}
+			List<BufferedImage> alienSprites = sprites.get("alien" + (i + 1));
 
-	public AliensManager(int aliensInRow, int rows, int rowBeginning, int rowY, int aliensWidth, int aliensHeight, int aliensSpeed, Color[] aliensColors, Map<String, List<BufferedImage>> sprites) {
-		
+			aliensRows.add(new AlienRow(config.aliensInRow(), config.rowBeginning(), config.rowY() + heightSeparation * i,
+					config.aliensWidth(), config.aliensHeight(), config.aliensSpeed(),
+					alienRowColor,
+					SpritePainter.paint(alienSprites, alienRowColor), sprites.get("alienBeam")));
+		}
 	}
 
 	public List<AlienRow> aliensRows() {
