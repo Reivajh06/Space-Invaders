@@ -1,4 +1,4 @@
-package reivajh06.spaceinvaders.managers;
+package reivajh06.spaceinvaders.configurators;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;

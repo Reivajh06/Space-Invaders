@@ -1,6 +1,7 @@
 package reivajh06.spaceinvaders.managers;
 
 import reivajh06.spaceinvaders.AlienRow;
+import reivajh06.spaceinvaders.configurators.AliensConfig;
 import reivajh06.spaceinvaders.scenes.LevelScene;
 import reivajh06.spaceinvaders.Renderable;
 import reivajh06.spaceinvaders.sprites.SpritePainter;

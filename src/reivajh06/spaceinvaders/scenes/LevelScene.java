@@ -3,14 +3,13 @@ package reivajh06.spaceinvaders.scenes;
 import reivajh06.spaceinvaders.Player;
 import reivajh06.spaceinvaders.SpaceInvaders;
 import reivajh06.spaceinvaders.entities.Turret;
-import reivajh06.spaceinvaders.managers.AliensConfig;
+import reivajh06.spaceinvaders.configurators.AliensConfig;
 import reivajh06.spaceinvaders.managers.AliensManager;
 import reivajh06.spaceinvaders.managers.BeamsManager;
 import reivajh06.spaceinvaders.sprites.Spritesheet;
 
 import java.awt.*;
 import java.io.IOException;
-import java.util.List;
 
 public class LevelScene extends Scene {
 
