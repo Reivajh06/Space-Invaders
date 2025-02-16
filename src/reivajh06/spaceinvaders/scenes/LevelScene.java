@@ -38,6 +38,9 @@ public class LevelScene extends Scene {
 
 	@Override
 	public void update() {
+		if(aliensManager.isEmpty()) game.setScene(new WinScene(game));
+		if(turret().isDestroyed()) game.setScene(new LoseScene(game));
+
 		aliensManager.update(this);
 		player.turret().update(this);
 		beamsManager.update(this);

@@ -1,7 +1,7 @@
 package reivajh06.spaceinvaders;
 
 import naitsirc98.blue.Game;
-import reivajh06.spaceinvaders.scenes.LevelScene;
+import reivajh06.spaceinvaders.scenes.Menu;
 import reivajh06.spaceinvaders.scenes.Scene;
 import reivajh06.spaceinvaders.sprites.Spritesheet;
 import reivajh06.spaceinvaders.sprites.SpritesheetFactory;
@@ -13,12 +13,11 @@ public class SpaceInvaders extends Game {
 
 	private String sheetPath;
 	private Spritesheet spritesheet;
-	private LevelScene scene;
+	private Scene scene;
 
 	public SpaceInvaders(String sheetPath) throws IOException {
 		this.sheetPath = sheetPath;
 		spritesheet = SpritesheetFactory.create(sheetPath);
-		scene = new LevelScene(this, spritesheet);
 	}
 
 	@Override
@@ -28,18 +27,17 @@ public class SpaceInvaders extends Game {
 
 	@Override
 	protected void onStart() {
-		/*try {
-			spritesheet = SpritesheetFactory.create(sheetPath);
-		} catch (IOException e) {
-			throw new RuntimeException(e);
-		}
-		*/
+		scene = new Menu(this);
 
 	}
 
 	@Override
 	protected void onUpdate(float deltaTime) {
-		scene.update();
+		try {
+			scene.update();
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
 	}
 
 	@Override
@@ -51,5 +49,13 @@ public class SpaceInvaders extends Game {
 	@Override
 	protected void onExit() {
 
+	}
+
+	public void setScene(Scene scene) {
+		this.scene = scene;
+	}
+
+	public Spritesheet getSpritesheet() {
+		return this.spritesheet;
 	}
 }

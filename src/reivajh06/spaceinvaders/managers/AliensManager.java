@@ -63,4 +63,8 @@ public class AliensManager implements Renderable, Iterable<AlienRow> {
 	public Iterator<AlienRow> iterator() {
 		return aliensRows().iterator();
 	}
-}
+
+	public boolean isEmpty() {
+		return aliensRows.isEmpty();
+	}
+ }
