@@ -54,9 +54,7 @@ public class AliensManager implements Renderable, Iterable<AlienRow> {
 
 	@Override
 	public void render(Graphics2D graphics) {
-		for(AlienRow alienRow : aliensRows) {
-			alienRow.render(graphics);
-		}
+		aliensRows.forEach(alienRow -> alienRow.render(graphics));
 	}
 
 	@Override

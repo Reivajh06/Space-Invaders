@@ -22,10 +22,6 @@ public class EnemyBuilder {
 		return this;
 	}
 
-	public EnemyBuilder() {
-
-	}
-
 	public int x() {
 		return x;
 	}
